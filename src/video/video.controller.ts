@@ -44,6 +44,11 @@ export class VideoController {
     return this.videoService.findOne(+id);
   }
 
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.videoService.remove(+id);
+  }
+
   /**
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateVideoDto: UpdateVideoDto) {
