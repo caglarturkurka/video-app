@@ -24,7 +24,17 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Video-API](https://github.com/caglarturkurka/video-app) is a [Nestjs](https://nestjs.com/) project to upload Video.
+<br>
+
+Technolohy Stack 
+ * Nestjs
+ * TypeORM
+ * MySQL
+ * Docker
+ * Github
+ * Swagger
+ * TypeScript
 
 ## Database
 
@@ -62,6 +72,11 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Swagger URL
+```bash
+ http://localhost:3000/api
 ```
 
 ## Support
