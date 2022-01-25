@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Patch, Post, UploadedFile, UseInterceptors} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Patch, Post, Query, UploadedFile, UseInterceptors} from '@nestjs/common';
 import { VideoService } from './video.service';
 import { CreateVideoDto } from './dto/create-video.dto';
 import { UpdateVideoDto } from './dto/update-video.dto';
@@ -35,8 +35,8 @@ export class VideoController {
   }
 
   @Get()
-  findAll() {
-    return this.videoService.findAll();
+  findAll(@Query('sort') sort) {
+    return this.videoService.findAll(sort);
   }
 
   @Get(':id')

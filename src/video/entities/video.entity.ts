@@ -15,7 +15,7 @@ export class Video {
   public fileType: string;
 
   @Column()
-  public fileSize: string;
+  public fileSize: number;
 
   @Column()
   public description: string;

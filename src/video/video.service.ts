@@ -33,11 +33,11 @@ export class VideoService {
     }
   }
 
-  async findAll() {
+  async findAll(sort = 'ASC') {
     try {
       const videos = await this.videoRepo.find({
         order: {
-          fileSize: 'ASC',
+          fileSize: sort === 'ASC' ? 'ASC' : 'DESC',
         },
       });
       if (!videos || videos.length <= 0) {

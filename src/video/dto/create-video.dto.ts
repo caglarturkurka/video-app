@@ -5,7 +5,7 @@ export class CreateVideoDto {
 
   public fileType: string;
 
-  public fileSize: string;
+  public fileSize: number;
 
   public description: string;
 }
