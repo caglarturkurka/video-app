@@ -1,9 +1,20 @@
-import {Body, Controller, Delete, Get, Param, Patch, Post, Query, UploadedFile, UseInterceptors} from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 import { VideoService } from './video.service';
 import { CreateVideoDto } from './dto/create-video.dto';
-import { UpdateVideoDto } from './dto/update-video.dto';
 import { diskStorage } from 'multer';
 import { FileInterceptor } from '@nestjs/platform-express';
+import {ApiConsumes, ApiQuery} from '@nestjs/swagger';
 
 const videoStorageOptions = diskStorage({
   destination: './upload/videos',
@@ -17,6 +28,7 @@ export class VideoController {
   constructor(private readonly videoService: VideoService) {}
 
   @Post()
+  @ApiConsumes('multipart/form-data')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: videoStorageOptions,
@@ -34,8 +46,12 @@ export class VideoController {
     return this.videoService.create(file, createVideoDto);
   }
 
+  @ApiQuery({
+    name: 'sort',
+    required: false,
+  })
   @Get()
-  findAll(@Query('sort') sort) {
+  findAll(@Query('sort') sort: string) {
     return this.videoService.findAll(sort);
   }
 

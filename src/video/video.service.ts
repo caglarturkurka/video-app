@@ -37,7 +37,7 @@ export class VideoService {
     try {
       const videos = await this.videoRepo.find({
         order: {
-          fileSize: sort === 'ASC' ? 'ASC' : 'DESC',
+          fileSize: sort && sort.toUpperCase() === 'ASC' ? 'ASC' : 'DESC',
         },
       });
       if (!videos || videos.length <= 0) {

@@ -1,11 +1,16 @@
+import { IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+
 export class CreateVideoDto {
+  @ApiProperty()
+  @IsNotEmpty()
   public title: string;
 
-  public url: string;
-
-  public fileType: string;
-
-  public fileSize: number;
-
+  @ApiProperty()
+  @IsNotEmpty()
   public description: string;
+
+  @ApiProperty({ format: 'binary', type: 'string' })
+  @IsNotEmpty()
+  public file: any;
 }
