@@ -11,6 +11,5 @@ export class CreateVideoDto {
   public description: string;
 
   @ApiProperty({ format: 'binary', type: 'string' })
-  @IsNotEmpty()
   public file: any;
 }
