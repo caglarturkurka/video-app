@@ -5,10 +5,10 @@ export class Video {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
+  @Column({ nullable: false })
   public url: string;
 
-  @Column()
+  @Column({ nullable: false })
   public title: string;
 
   @Column()
@@ -17,7 +17,7 @@ export class Video {
   @Column()
   public fileSize: number;
 
-  @Column()
+  @Column({ nullable: false })
   public description: string;
 }
 

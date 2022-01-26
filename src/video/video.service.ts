@@ -9,6 +9,7 @@ import * as fs from 'fs';
 import { promisify } from 'util';
 const unlinkAsync = promisify(fs.unlink);
 import * as path from 'path';
+import { BadRequestException } from '../shared/exception/bad-request.exception';
 
 @Injectable()
 export class VideoService {
@@ -16,6 +17,9 @@ export class VideoService {
 
   async create(file, createVideoDto: CreateVideoDto) {
     try {
+      if (!file || file.size <= 0) {
+        throw new BadRequestException('File can not be empty');
+      }
       const video = new Video();
       video.fileType = file.mimetype || file.type;
       video.fileSize = file.size;
